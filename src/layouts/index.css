@@ -1,0 +1,39 @@
+section#layout-section{
+    width: 100dvw;
+    height: 100dvh;
+    background-color: #fff;
+    display: flex;
+
+    overflow: hidden;
+}
+
+section#layout-left{
+    width: 200px;
+    height: 100dvh;
+}
+
+
+section#layout-right{
+    flex: auto;
+    height: 100dvh;
+    background-color: #EFF1F5;
+}
+
+section#layout-header{
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+}
+
+section#layout-body{
+    width: 100%;
+    height: calc(100% - 60px);
+    padding: 1rem 0 0 1rem;
+    box-sizing: border-box;
+}
+section#layout-body-content{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
