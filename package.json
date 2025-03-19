@@ -16,8 +16,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "@types/node": "^22.13.10",
     "ant-design-vue": "4.x",
     "axios": "^1.8.2",
+    "pinia": "^3.0.1",
+    "pinia-plugin-persistedstate": "^4.2.0",
     "vue": "^3.5.13",
     "vue-router": "4"
   },

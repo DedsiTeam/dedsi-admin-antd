@@ -6,10 +6,15 @@ section#layout-section{
 
     overflow: hidden;
 }
+section#layout-section>section{
+    transition: all 0.2s ease-in-out;
+}
 
-section#layout-left{
-    width: 200px;
+section#layout-left {
     height: 100dvh;
+    background-color: #001529;
+
+    overflow: hidden;
 }
 
 

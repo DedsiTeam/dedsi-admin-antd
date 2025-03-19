@@ -1,6 +1,6 @@
 <template>
 <section id="layout-section">
-    <section id="layout-left">
+    <section id="layout-left" :style="{ width: headerCollapsed ? '50px' : '200px' }">
         <LayoutMenu />
     </section>
     <section id="layout-right">
@@ -16,9 +16,17 @@
 </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import './index.css';
 
 import LayoutHeader from './header/index.vue';
 import LayoutMenu from './menu/index.vue';
+
+import { computed } from "vue";
+
+import { useLayoutStore } from '@/pinias/public-api.ts'
+
+const layoutStore = useLayoutStore();
+
+const headerCollapsed = computed(() => layoutStore.getCollapsed)
 </script>

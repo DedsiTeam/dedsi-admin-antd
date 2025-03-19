@@ -1,11 +1,10 @@
 <template>
     <AppName />
     <a-menu
-        id="dddddd"
         v-model:openKeys="openKeys"
         v-model:selectedKeys="selectedKeys"
-        style="width: 200px"
         mode="inline"
+        theme="dark"
         :items="menuItems"
         @click="handleClick"
     />
