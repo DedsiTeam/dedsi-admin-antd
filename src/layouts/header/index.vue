@@ -1,8 +1,8 @@
 <template>
     <div class="header-component-div flex items-center justify-between h-full px-4">
         <div>
-          <MenuUnfoldOutlined v-if="collapsed" @click="toggleCollapsedClick" />
-          <MenuFoldOutlined v-else @click="toggleCollapsedClick" />
+          <MenuUnfoldOutlined v-if="layoutStore.getCollapsed" @click="toggleCollapsedClick(false)" />
+          <MenuFoldOutlined v-else @click="toggleCollapsedClick(true)" />
         </div>
         <div>
           <userInfo></userInfo>
@@ -10,19 +10,16 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
-import { ref } from "vue";
 import { useLayoutStore } from '@/pinias/public-api.ts'
 
 import userInfo from '../userInfo/index.vue'
 
-const { setCollapsed } = useLayoutStore();
+const layoutStore = useLayoutStore();
 
-const collapsed = ref(false);
-function toggleCollapsedClick(){
-  collapsed.value = !collapsed.value;
-  setCollapsed(collapsed.value)
+function toggleCollapsedClick(val: boolean) {
+  layoutStore.setCollapsed(val)
 }
 </script>
 <style scoped>

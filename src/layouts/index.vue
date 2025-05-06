@@ -1,7 +1,11 @@
 <template>
 <section id="layout-section">
-    <section id="layout-left" :style="{ width: headerCollapsed ? '50px' : '200px' }">
-        <LayoutMenu />
+    <section id="layout-left" :style="{ width: layoutStore.getCollapsed ? '50px' : '200px' }">
+      <LayoutMenu />
+      <div id="LayoutMenu-bottom-div">
+        <RightOutlined v-if="layoutStore.getCollapsed" @click="toggleCollapsedClick(false)" />
+        <LeftOutlined v-else @click="toggleCollapsedClick(true)" />
+      </div>
     </section>
     <section id="layout-right">
         <section id="layout-header">
@@ -17,16 +21,17 @@
 </template>
 
 <script setup lang="ts">
-import './index.css';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
 
+import './index.css';
 import LayoutHeader from './header/index.vue';
 import LayoutMenu from './menu/index.vue';
-
-import { computed } from "vue";
 
 import { useLayoutStore } from '@/pinias/public-api.ts'
 
 const layoutStore = useLayoutStore();
 
-const headerCollapsed = computed(() => layoutStore.getCollapsed)
+function toggleCollapsedClick(val: boolean) {
+  layoutStore.setCollapsed(val)
+}
 </script>
