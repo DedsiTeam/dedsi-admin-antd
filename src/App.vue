@@ -1,8 +1,3 @@
 <template>
-<DedsiLayout />
+<router-view/>
 </template>
-
-<script setup lang="ts">
-import DedsiLayout from './layouts/index.vue'
-
-</script>
