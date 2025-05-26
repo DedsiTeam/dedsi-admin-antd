@@ -13,6 +13,11 @@
 import { ref } from "vue";
 import AppName from "../appName/index.vue";
 
+import { menuRouteStores } from '@/pinias/public-api';
+
+const { addDatas } = menuRouteStores();
+
+
 const menuItems = [
 {
     key: '1',
@@ -69,7 +74,7 @@ const menuItems = [
 const selectedKeys = ref<string[]>([]);
 const openKeys = ref<string[]>([]);
 
-function handleClick(e) {
-    console.log("click", e);
+function handleClick(e: any) {
+    addDatas(e.key);
 }
 </script>
