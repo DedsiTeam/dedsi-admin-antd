@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
@@ -25,4 +25,9 @@ const fromData = reactive({
 function loginClick() {
   router.push('/')
 }
+
+onMounted(() => {
+  localStorage.clear()
+  sessionStorage.clear()
+})
 </script>
