@@ -24,10 +24,10 @@ function toggleCollapsedClick(val: boolean) {
 </script>
 <style scoped>
 div.header-component-div {
-  height: 60px;
+  height: 50px;
 }
 div.header-component-div > div{
-  height: 60px;
+  height: 50px;
   display: flex;
   align-items: center;
 }

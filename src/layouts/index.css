@@ -45,7 +45,16 @@ section#layout-header {
     background-color: #fff;
 }
 
-section#layout-body{
+section#layout-body {
     width: 100%;
     height: calc(100% - 50px);
+}
+section#layout-body-content {
+    width: 100%;
+    height: calc(100% - 50px);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    padding: 1rem;
 }

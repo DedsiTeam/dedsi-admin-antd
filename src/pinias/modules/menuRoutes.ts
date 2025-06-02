@@ -2,32 +2,28 @@ import { defineStore } from 'pinia'
 
 export const menuRouteStores = defineStore('menuRouteStores', {
     state: () => ({
-        menuRouteDatas: ['/dashboard'] as string[],
-        menuRouteSelected: ''
+        menuRouteDatas: [] as string[],
+        menuRouteSelected: null as string | null
     }),
     actions:{
-        async addDatas(val: string) {
+        async add(val: string) {
             this.menuRouteSelected = val;
-
             if(this.menuRouteDatas.includes(val)){
                 return
             }
             this.menuRouteDatas.push(val)
         },
-        async removeDatas(val: string) {
+        async delete(val: string) {
             const index = this.menuRouteDatas.indexOf(val);
             if (index > -1) {
                 this.menuRouteDatas.splice(index, 1);
-
-                if(index > 0){
+                if(index > 0) {
                     this.menuRouteSelected = this.menuRouteDatas[index - 1];
                 }
             }
         },
-    },
-    getters: {
-        getDatas(state) {
-            return state.menuRouteDatas
+        async setMenuRouteSelected(val: string | null) {
+            this.menuRouteSelected = val;
         }
     }
 });

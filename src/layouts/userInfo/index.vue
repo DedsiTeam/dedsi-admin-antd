@@ -9,8 +9,10 @@
         </a-menu-item>
         <a-menu-divider />
         <a-menu-item>
-          <LogoutOutlined />
-          退出登录
+          <a href="/login">
+            <LogoutOutlined />
+            退出登录
+          </a>
         </a-menu-item>
       </a-menu>
     </template>

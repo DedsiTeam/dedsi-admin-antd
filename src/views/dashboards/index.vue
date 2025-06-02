@@ -1,11 +1,5 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-<h1>Dashboard</h1>
+<div style="height: 10000px;">
+    <a-card>2</a-card>
+</div>
 </template>
-
-<style scoped>
-
-</style>

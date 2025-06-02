@@ -5,76 +5,31 @@
         v-model:selectedKeys="selectedKeys"
         mode="inline"
         theme="dark"
-        :items="menuItems"
+        :items="menuData"
         @click="handleClick"
     />
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import AppName from "../appName/index.vue";
+import { useRouter } from "vue-router";
 
 import { menuRouteStores } from '@/pinias/public-api';
+import{ menuData } from '@/configs/menu';
 
-const { addDatas } = menuRouteStores();
+const menuRouteStore = menuRouteStores();
+const router = useRouter();
 
+watch(() => menuRouteStore.menuRouteSelected, (newVal) => {
+    selectedKeys.value = [newVal as string];
+    openKeys.value = [newVal as string];
+});
 
-const menuItems = [
-{
-    key: '1',
-    label: 'Option 1',
-    title: 'Option 1',
-  },
-  {
-    key: '2',
-    label: 'Option 2',
-    title: 'Option 2',
-    children: [
-      {
-        key: '2-3-1',
-        label: 'Option 2-3-1',
-        title: 'Option 2-3-1',
-      },
-      {
-        key: '2-3-2',
-        label: 'Option 2-3-2',
-        title: 'Option 2-3-2',
-        children: [
-          {
-            key: '2-3-2-1',
-            label: 'Option 2-3-2-1',
-            title: 'Option 2-3-2-1',
-          },
-          {
-            key: '2-3-2-2',
-            label: 'Option 2-3-2-2',
-            title: 'Option 2-3-2-2',
-          },
-        ]
-      },
-    ]
-  },
-  {
-    key: '3',
-    label: 'Option 3',
-    title: 'Option 3',
-    children: [
-      {
-        key: '3-3-2-1',
-        label: 'Option 3-3-2-1',
-        title: 'Option 3-3-2-1',
-      },
-      {
-        key: '3-3-2-2',
-        label: 'Option 3-3-2-2',
-        title: 'Option 3-3-2-2',
-      },
-    ]
-  }
-];
 const selectedKeys = ref<string[]>([]);
 const openKeys = ref<string[]>([]);
 
 function handleClick(e: any) {
-    addDatas(e.key);
+    menuRouteStore.add(e.key);
+    router.push(e.key);
 }
 </script>
